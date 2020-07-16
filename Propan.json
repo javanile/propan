@@ -1,9 +1,9 @@
 {
   "name": "Propan",
-  "version": "",
+  "version": "0.1.0",
   "layers": [
-    "propan.ml/vtiger@7.1.0",
-    "oci/custom-login@master"
+    "javanile/vtiger:7.1.0",
+    "oci/custom-login:master"
   ],
   "volumes": {
 
