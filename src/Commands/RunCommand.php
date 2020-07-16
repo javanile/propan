@@ -14,7 +14,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use ZipArchive;
 
-class InstallCommand extends BaseCommand
+class RunCommand extends BaseCommand
 {
     /**
      * Configure the command options.
@@ -24,8 +24,9 @@ class InstallCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('install')
-            ->setDescription('Install all dependencies')
+            ->setName('run')
+            ->setDescription('Add brick from Larawal registry')
+            ->addArgument('brick', InputArgument::REQUIRED)
             ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Install on specific path', getcwd());
     }
 
@@ -41,14 +42,28 @@ class InstallCommand extends BaseCommand
     {
         $this->checkExtensions();
 
-        $output->writeln('<info>Configuration lookup...</info>');
-
+        $brick = $input->getArgument('brick');
         $directory = $input->getOption('path');
-        $config = $this->configLookup($directory);
 
-        if (isset($config['from'])) {
-            $brickUrl = $this->registryLookup($config['from']);
-            $this->fetchBrick($brickUrl, $directory, $output);
+        /*
+        if (! $input->getOption('force')) {
+            $this->verifyApplicationDoesntExist($directory);
+        }
+        */
+
+        $output->writeln('<info>Registry lookup...</info>');
+
+        $brickUrl = $this->registryLookup($brick);
+        $brickFile = $this->tempFile();
+        $tempDir = $this->tempDir();
+
+        $this->download($brickUrl, $brickFile)
+             ->extract($brickFile, $tempDir);
+
+        $config = $this->configLookup($tempDir);
+
+        if (isset($config['files'])) {
+            $this->copyFiles($config['files'], $tempDir, $directory);
         }
 
         $commands = ['install --no-scripts'];
@@ -57,13 +72,15 @@ class InstallCommand extends BaseCommand
 
         $commands = $this->appendRequireDev($commands, $config);
 
-        $commands = $this->appendPostInstall($commands, $config);
+        $commands = $this->appendPostAdd($commands, $config);
 
         $process = $this->runCommands($commands, $directory, $input, $output);
 
         if ($process->isSuccessful()) {
-            $output->writeln('<comment>Brick ready! Build something amazing.</comment>');
+            $output->writeln('<comment>Brick successful added.</comment>');
         }
+
+        $output->writeln('<comment>Brick successful added.</comment>');
 
         return 0;
     }
