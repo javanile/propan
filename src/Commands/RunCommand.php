@@ -25,9 +25,9 @@ class RunCommand extends BaseCommand
     {
         $this
             ->setName('run')
-            ->setDescription('Add brick from Larawal registry')
-            ->addArgument('brick', InputArgument::REQUIRED)
-            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Install on specific path', getcwd());
+            ->setDescription('Run context or release');
+            //->addArgument('brick', InputArgument::REQUIRED)
+            //->addOption('path', null, InputOption::VALUE_REQUIRED, 'Install on specific path', getcwd());
     }
 
     /**
@@ -42,8 +42,8 @@ class RunCommand extends BaseCommand
     {
         $this->checkExtensions();
 
-        $brick = $input->getArgument('brick');
-        $directory = $input->getOption('path');
+        //$brick = $input->getArgument('brick');
+        //$directory = $input->getOption('path');
 
         /*
         if (! $input->getOption('force')) {
@@ -51,6 +51,7 @@ class RunCommand extends BaseCommand
         }
         */
 
+        /*
         $output->writeln('<info>Registry lookup...</info>');
 
         $brickUrl = $this->registryLookup($brick);
@@ -79,8 +80,12 @@ class RunCommand extends BaseCommand
         if ($process->isSuccessful()) {
             $output->writeln('<comment>Brick successful added.</comment>');
         }
+        */
+        $output->writeln('<comment>Run \'propan.json\'.</comment>');
 
-        $output->writeln('<comment>Brick successful added.</comment>');
+        $runnable = new \Javanile\Propan\Activities\Run\Modes\BuiltinWebServer();
+
+        $runnable->execute();
 
         return 0;
     }

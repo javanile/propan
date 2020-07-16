@@ -14,9 +14,9 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use ZipArchive;
 
-class BuildActivity
+class Build
 {
-    public function run($context)
+    public function execute(InputInterface $input, OutputInterface $output)
     {
 
     }
