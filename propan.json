@@ -1,0 +1,11 @@
+{
+  "name": "",
+  "version": "",
+  "layers": [
+    "propan.ml/vtiger@7.1.0",
+    "oci/custom-login@master"
+  ],
+  "volumes": {
+
+  }
+}

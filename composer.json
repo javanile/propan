@@ -1,0 +1,57 @@
+{
+    "name": "larawal/installer",
+    "description": "Create your Larawal project based on Laravel.",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "passasooz",
+            "email": "francescopassanante@gmail.com"
+        },
+        {
+            "name": "henrygri",
+            "email": "fgrieco9045@gmail.com"
+        },
+        {
+            "name": "francescobianco",
+            "email": "bianco@javanile.org"
+        }
+    ],
+    "require": {
+        "php": "^7.2.9",
+        "ext-zip": "*",
+        "guzzlehttp/guzzle": "^6.0",
+        "symfony/console": "^4.0|^5.0",
+        "symfony/filesystem": "^4.0|^5.0",
+        "symfony/process": "^4.2|^5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "bin": [
+        "bin/larawal"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Larawal\\Installer\\Console\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Larawal\\Installer\\Console\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
