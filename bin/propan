@@ -13,5 +13,7 @@ $app->add(new Javanile\Propan\Commands\AddCommand);
 $app->add(new Javanile\Propan\Commands\NewCommand);
 $app->add(new Javanile\Propan\Commands\FetchCommand);
 $app->add(new Javanile\Propan\Commands\InstallCommand);
+$app->add(new Javanile\Propan\Commands\RunCommand);
+$app->add(new Javanile\Propan\Commands\StopCommand);
 
 $app->run();
