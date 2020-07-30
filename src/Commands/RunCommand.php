@@ -25,9 +25,9 @@ class RunCommand extends BaseCommand
     {
         $this
             ->setName('run')
-            ->setDescription('Run context or release');
+            ->setDescription('Run context or release')
             //->addArgument('brick', InputArgument::REQUIRED)
-            //->addOption('path', null, InputOption::VALUE_REQUIRED, 'Install on specific path', getcwd());
+            ->addOption('port', null, InputOption::VALUE_REQUIRED, 'Install on specific path', 8080);
     }
 
     /**
@@ -81,11 +81,13 @@ class RunCommand extends BaseCommand
             $output->writeln('<comment>Brick successful added.</comment>');
         }
         */
-        $output->writeln('<comment>Run \'propan.json\'.</comment>');
+        $output->writeln('<comment>Run \'Propan.json\'.</comment>');
 
-        $runnable = new \Javanile\Propan\Activities\Run\Modes\BuiltinWebServer();
+        $context = $this->getApplication()->getContext();
 
-        $runnable->execute();
+        $runActivity = new \Javanile\Propan\Activities\Run\Adapters\BuiltinWebServer($context);
+
+        $runActivity->execute();
 
         return 0;
     }

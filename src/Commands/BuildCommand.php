@@ -14,7 +14,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use ZipArchive;
 
-class AddCommand extends BaseCommand
+class BuildCommand extends BaseCommand
 {
     /**
      * Configure the command options.
@@ -24,10 +24,11 @@ class AddCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('add')
-            ->setDescription('Add brick from Larawal registry')
-            ->addArgument('brick', InputArgument::REQUIRED)
-            ->addOption('path', null, InputOption::VALUE_REQUIRED, 'Install on specific path', getcwd());
+            ->setName('build')
+            //->setDescription('Add brick from Larawal registry')
+            //->addArgument('brick', InputArgument::REQUIRED)
+            //->addOption('path', null, InputOption::VALUE_REQUIRED, 'Install on specific path', getcwd());
+        ;
     }
 
     /**
@@ -40,16 +41,16 @@ class AddCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        /*
         $this->checkExtensions();
 
         $brick = $input->getArgument('brick');
         $directory = $input->getOption('path');
 
-        /*
-        if (! $input->getOption('force')) {
-            $this->verifyApplicationDoesntExist($directory);
-        }
-        */
+        //if (! $input->getOption('force')) {
+        //    $this->verifyApplicationDoesntExist($directory);
+        //}
+
 
         $output->writeln('<info>Registry lookup...</info>');
 
@@ -79,8 +80,15 @@ class AddCommand extends BaseCommand
         if ($process->isSuccessful()) {
             $output->writeln('<comment>Brick successful added.</comment>');
         }
+        */
 
         $output->writeln('<comment>Brick successful added.</comment>');
+
+        $context = $this->getApplication()->getContext();
+
+        $buildActivity = new \Javanile\Propan\Activities\Build($context);
+
+        $buildActivity->execute();
 
         return 0;
     }

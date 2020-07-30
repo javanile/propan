@@ -16,5 +16,18 @@ use ZipArchive;
 
 class Context
 {
+    protected $cwd;
 
+    protected $buildPath;
+
+    public function __construct($cwd)
+    {
+        $this->cwd = $cwd;
+        $this->buildPath = $this->cwd.'/.build';
+    }
+
+    public function getBuildPath()
+    {
+        return $this->buildPath;
+    }
 }

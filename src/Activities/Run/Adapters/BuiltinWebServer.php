@@ -1,6 +1,6 @@
 <?php
 
-namespace Javanile\Propan\Activities\Run\Modes;
+namespace Javanile\Propan\Activities\Run\Adapters;
 
 use GuzzleHttp\Client;
 use RuntimeException;
@@ -40,6 +40,21 @@ class BuiltinWebServer
     protected $portOffset = 0;
 
     /**
+     * The current port offset.
+     *
+     * @var int
+     */
+    protected $context;
+
+    /**
+     * @param $context
+     */
+    public function __construct($context)
+    {
+        $this->context = $context;
+    }
+
+    /**
      * Execute the console command.
      *
      * @return int
@@ -48,7 +63,7 @@ class BuiltinWebServer
      */
     public function execute()
     {
-        $publicPath = getcwd().'/.build/public';
+        $publicPath = $this->context->getBuildPath().'/public';
 
         chdir($publicPath);
 
@@ -72,7 +87,7 @@ class BuiltinWebServer
      */
     protected function serverCommand()
     {
-        $serverFile = getcwd().'/.build/server.php';
+        $serverFile = $this->context->getBuildPath().'/server.php';
 
         return sprintf('%s -S %s:%s %s',
             ProcessUtils::escapeArgument((new PhpExecutableFinder)->find(false)),
