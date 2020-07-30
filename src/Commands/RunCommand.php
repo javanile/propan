@@ -85,7 +85,7 @@ class RunCommand extends BaseCommand
 
         $context = $this->getApplication()->getContext();
 
-        $runActivity = new \Javanile\Propan\Activities\Run\Adapters\BuiltinWebServer($context);
+        $runActivity = new \Javanile\Propan\Activities\RunAdapters\BuiltinWebServer($context);
 
         $runActivity->execute();
 

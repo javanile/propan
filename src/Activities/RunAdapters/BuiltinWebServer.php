@@ -1,6 +1,6 @@
 <?php
 
-namespace Javanile\Propan\Activities\Run\Adapters;
+namespace Javanile\Propan\Activities\RunAdapters;
 
 use GuzzleHttp\Client;
 use RuntimeException;
@@ -150,4 +150,3 @@ class BuiltinWebServer
         ];
     }
 }
-

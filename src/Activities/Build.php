@@ -4,6 +4,7 @@ namespace Javanile\Propan\Activities;
 
 use bar\baz\source_with_namespace;
 use GuzzleHttp\Client;
+use Javanile\Propan\Support\FileUtils;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -34,6 +35,8 @@ class Build
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        FileUtils::recursiveCopy(__DIR__.'/../../build', $this->context->getBuildPath());
+
         file_put_contents($this->context->getBuildPath().'/composer.json', json_encode([
             'name' => 'propan/propan',
             'version' => '0.1.0',
@@ -42,8 +45,12 @@ class Build
         $layers = $this->context->getLayers();
 
         foreach ($layers as $layer) {
+            list($package, $version) = explode(':', $layer);
             $command = 'require '.$layer;
             $this->context->runCommands([$command], $this->context->getBuildPath(), $input, $output);
+
+            $source = $this->context->getBuildPath().'/vendor/'.$package;
+            FileUtils::recursiveCopy($source, $this->context->getBuildPath().'/files');
         }
     }
 }
