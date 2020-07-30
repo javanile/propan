@@ -2,8 +2,7 @@
   "name": "Propan",
   "version": "0.1.0",
   "layers": [
-    "javanile/vtiger:7.1.0",
-    "oci/custom-login:master"
+    "javanile/vtiger-core:7.1.0"
   ],
   "volumes": {
 
