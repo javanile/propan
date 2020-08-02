@@ -35,9 +35,9 @@ class Build
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        mkdir($this->context->getBuildPath().'/files', 0777, true);
-        mkdir($this->context->getBuildPath().'/public', 0777, true);
-        mkdir($this->context->getBuildPath().'/vendor', 0777, true);
+        FileUtils::mkdir($this->context->getBuildPath().'/files', 0777, true);
+        FileUtils::mkdir($this->context->getBuildPath().'/public', 0777, true);
+        FileUtils::mkdir($this->context->getBuildPath().'/vendor', 0777, true);
 
         file_put_contents(
             $this->context->getBuildPath().'/public/index.php',

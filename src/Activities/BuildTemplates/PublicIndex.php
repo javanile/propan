@@ -1,5 +1,7 @@
 <?php
 
+namespace Javanile\Propan\Activities\BuildTemplates;
+
 class PublicIndex
 {
     public static function fileContent()

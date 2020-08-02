@@ -29,8 +29,9 @@ class Context
         $this->cwd = $cwd;
     }
 
-    public function initialize()
+    public function initialize($path, $output)
     {
+        $this->path = $path;
         $this->buildPath = $this->cwd.'/.build';
         $this->configFile = $this->cwd.'/Propan.json';
 
@@ -39,8 +40,7 @@ class Context
             exit(1);
         }
 
-        $this->config = json_decode(file_get_contents(), true);
-
+        $this->config = json_decode(file_get_contents($this->configFile), true);
     }
 
     public function getBuildPath()

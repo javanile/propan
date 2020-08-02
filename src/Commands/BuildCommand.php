@@ -25,8 +25,8 @@ class BuildCommand extends BaseCommand
     {
         $this
             ->setName('build')
-            //->setDescription('Add brick from Larawal registry')
-            //->addArgument('brick', InputArgument::REQUIRED)
+            ->setDescription('Build a bundle from a Propan.json file')
+            ->addArgument('path', InputArgument::REQUIRED)
             //->addOption('path', null, InputOption::VALUE_REQUIRED, 'Install on specific path', getcwd());
         ;
     }
@@ -41,10 +41,11 @@ class BuildCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $path = $input->getArgument('path');
+
         /*
         $this->checkExtensions();
 
-        $brick = $input->getArgument('brick');
         $directory = $input->getOption('path');
 
         //if (! $input->getOption('force')) {
@@ -86,7 +87,7 @@ class BuildCommand extends BaseCommand
 
         $context = $this->getApplication()->getContext();
 
-        $context->initialize($output);
+        $context->initialize($path, $output);
 
         $buildActivity = new \Javanile\Propan\Activities\Build($context);
 

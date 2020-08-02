@@ -31,4 +31,16 @@ class FileUtils
         }
         closedir($dir);
     }
+
+    /**
+     *
+     */
+    public static function mkdir($pathname, $mode = 0777, $recursive = false)
+    {
+        if (is_dir($pathname)) {
+            return;
+        }
+
+        mkdir($pathname, $mode, $recursive);
+    }
 }
