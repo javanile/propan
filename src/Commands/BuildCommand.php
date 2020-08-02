@@ -86,6 +86,8 @@ class BuildCommand extends BaseCommand
 
         $context = $this->getApplication()->getContext();
 
+        $context->initialize($output);
+
         $buildActivity = new \Javanile\Propan\Activities\Build($context);
 
         $buildActivity->execute($input, $output);

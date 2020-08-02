@@ -20,13 +20,27 @@ class Context
 
     protected $buildPath;
 
+    protected $configFile;
+
     protected $config;
 
     public function __construct($cwd)
     {
         $this->cwd = $cwd;
+    }
+
+    public function initialize()
+    {
         $this->buildPath = $this->cwd.'/.build';
-        $this->config = json_decode(file_get_contents($this->cwd.'/Propan.json'), true);
+        $this->configFile = $this->cwd.'/Propan.json';
+
+        if (!file_exists($this->configFile)) {
+            echo "Propan.json not found current directory";
+            exit(1);
+        }
+
+        $this->config = json_decode(file_get_contents(), true);
+
     }
 
     public function getBuildPath()
