@@ -12,7 +12,7 @@ Documentation for installing Propan can be found on the [Propan website](https:/
 
 ## Contributing
 
-Thank you for considering contributing to the Installer! The contribution guide can be found in the [Propan documentation](https://propan.javanile.org).
+Thank you for considering contributing! The contribution guide can be found in the [Propan documentation](https://propan.javanile.org).
 
 ## Code of Conduct
 
