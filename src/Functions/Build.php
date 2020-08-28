@@ -1,6 +1,6 @@
 <?php
 
-namespace Javanile\Propan\Activities;
+namespace Javanile\Propan\Functions;
 
 use bar\baz\source_with_namespace;
 use GuzzleHttp\Client;

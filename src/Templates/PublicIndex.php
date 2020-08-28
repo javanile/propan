@@ -1,6 +1,6 @@
 <?php
 
-namespace Javanile\Propan\Activities\Templates;
+namespace Javanile\Propan\Functions\Templates;
 
 class PublicIndex
 {

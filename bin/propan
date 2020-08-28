@@ -15,4 +15,9 @@ $app->add(new Javanile\Propan\Commands\BuildCommand);
 $app->add(new Javanile\Propan\Commands\RunCommand);
 $app->add(new Javanile\Propan\Commands\StopCommand);
 
-$app->run();
+try {
+    $app->run();
+} catch (Exception $e) {
+    echo 'ERROR: '.$e->getMessage()."\n";
+    exit(1);
+}
