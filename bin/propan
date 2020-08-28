@@ -9,14 +9,22 @@ if (file_exists(__DIR__.'/../../../autoload.php')) {
 
 var_dump($_ENV);
 
-$app = new Javanile\Propan\Application(getcwd());
+use Javanile\Propan\Application;
+use Javanile\Propan\Commands\BuildCommand;
+use Javanile\Propan\Commands\CleanCommand;
+use Javanile\Propan\Commands\RunCommand;
+use Javanile\Propan\Commands\StopCommand;
+use Javanile\Propan\Output;
 
-$app->add(new Javanile\Propan\Commands\BuildCommand);
-$app->add(new Javanile\Propan\Commands\RunCommand);
-$app->add(new Javanile\Propan\Commands\StopCommand);
+$app = new Application(getcwd());
+
+$app->add(new BuildCommand);
+$app->add(new CleanCommand);
+$app->add(new RunCommand);
+$app->add(new StopCommand);
 
 try {
-    $app->run();
+    $app->run(null, new Output);
 } catch (Exception $e) {
     echo 'ERROR: '.$e->getMessage()."\n";
     exit(1);
