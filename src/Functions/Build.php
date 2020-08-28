@@ -16,7 +16,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use ZipArchive;
 
-class Build
+class Build extends AbstractFunction
 {
     /**
      * The current port offset.

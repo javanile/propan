@@ -14,9 +14,9 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use ZipArchive;
 
-class Run extends AbstractFunction
+class Clean extends AbstractFunction
 {
-    public function execute()
+    public function execute(InputInterface $input, OutputInterface $output)
     {
 
     }

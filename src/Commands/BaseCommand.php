@@ -70,40 +70,6 @@ abstract class BaseCommand extends Command
     }
 
     /**
-     * Download the temporary Zip to the given file.
-     *
-     * @param  string  $zipFile
-     * @param  string  $version
-     * @return $this
-     */
-    protected function registryLookup($brick)
-    {
-        $response = (new Client)->get('https://larawal.github.io/registry/registry.json?ts='.time());
-
-        $registry = json_decode($response->getBody(), true);
-
-        if (empty($registry['version'])) {
-            throw new RuntimeException('Registry is broken!');
-        }
-
-        if (isset($registry['shortcuts'][$brick])) {
-            $brick = $registry['shortcuts'][$brick];
-        }
-
-        if (empty($registry['bricks'][$brick])) {
-            throw new RuntimeException("Brick not found: {$brick}");
-        }
-
-        $url = $registry['bricks'][$brick];
-
-        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
-            throw new RuntimeException("Brick '{$brick}' invalid url on registry: {$url}");
-        }
-
-        return $url;
-    }
-
-    /**
      * Extract the Zip file into the given directory.
      *
      * @param  string  $zipFile

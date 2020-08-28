@@ -2,7 +2,9 @@
 
 namespace Javanile\Propan\Functions;
 
+use bar\baz\source_with_namespace;
 use GuzzleHttp\Client;
+use Javanile\Propan\Support\FileUtils;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -14,10 +16,25 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
 use ZipArchive;
 
-class Run extends AbstractFunction
+abstract class AbstractFunction
 {
-    public function execute()
-    {
+    /**
+     * The current port offset.
+     *
+     * @var int
+     */
+    protected $context;
 
+    /**
+     * @param $context
+     */
+    public function __construct($context, $output)
+    {
+        $this->context = $context;
     }
+
+    /**
+     * @return mixed
+     */
+    abstract public function execute();
 }
