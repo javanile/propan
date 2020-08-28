@@ -3,7 +3,7 @@
 namespace Javanile\Propan\Commands;
 
 use GuzzleHttp\Client;
-use phpDocumentor\Reflection\Types\Context;
+use Javanile\Propan\Context;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -45,7 +45,8 @@ class CheckCommand extends BaseCommand
 
         $cwd = $this->getApplication()->getCwd();
 
-        $context = new Context($cwd);
+        $context = new Context($cwd, $output);
+        $context->initialize();
 
         $context->check();
 

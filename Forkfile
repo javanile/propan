@@ -1,1 +1,1 @@
-FROM javanile/forkfile 
+FROM javanile/php-package

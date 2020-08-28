@@ -12,35 +12,66 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Process\Process;
+use Symfony\Component\Yaml\Yaml;
 use ZipArchive;
 
 class Context
 {
+    /**
+     * @var
+     */
     protected $cwd;
 
+    /**
+     * @var string
+     */
+    protected $propanFile;
+
+    /**
+     * @var
+     */
+    protected $rawData;
+
+    /**
+     * @var
+     */
     protected $buildPath;
 
-    protected $configFile;
-
-    protected $config;
-
-    public function __construct($cwd)
+    /**
+     * Context constructor.
+     *
+     * @param $cwd
+     * @param $output
+     */
+    public function __construct($cwd, $output)
     {
         $this->cwd = $cwd;
+        $this->propanFile = $this->cwd.'/Propan.yml';
+        $this->buildPath = $this->cwd.'/build';
     }
 
-    public function initialize($path, $output)
+    /**
+     *
+     * @return bool
+     */
+    public function check()
     {
-        $this->path = $path;
-        $this->buildPath = $this->cwd.'/build';
-        $this->configFile = $this->cwd.'/Propan.yml';
 
-        if (!file_exists($this->configFile)) {
-            echo "Propan.json not found current directory";
-            exit(1);
+        var_dump($this->rawData);
+    }
+
+    /**
+     * @param $path
+     */
+    public function initialize()
+    {
+        if (!file_exists($this->propanFile)) {
+            echo 'Propan.yml not found in: '.dirname($this->propanFile)."\n";
+            return false;
         }
+        //$this->path = $path;
 
-        $this->config = json_decode(file_get_contents($this->configFile), true);
+        $this->rawData = Yaml::parseFile($this->propanFile);
     }
 
     public function getBuildPath()

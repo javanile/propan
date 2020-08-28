@@ -11,6 +11,7 @@ var_dump($_ENV);
 
 use Javanile\Propan\Application;
 use Javanile\Propan\Commands\BuildCommand;
+use Javanile\Propan\Commands\CheckCommand;
 use Javanile\Propan\Commands\CleanCommand;
 use Javanile\Propan\Commands\RunCommand;
 use Javanile\Propan\Commands\StopCommand;
@@ -19,6 +20,7 @@ use Javanile\Propan\Output;
 $app = new Application(getcwd());
 
 $app->add(new BuildCommand);
+$app->add(new CheckCommand);
 $app->add(new CleanCommand);
 $app->add(new RunCommand);
 $app->add(new StopCommand);
