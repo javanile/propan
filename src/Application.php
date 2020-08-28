@@ -11,25 +11,25 @@ class Application extends ConsoleApplication
      *
      * @param $context
      */
-    protected $context;
+    protected $cwd;
 
     /**
      * Application constructor.
      *
      * @param $context
      */
-    public function __construct($context)
+    public function __construct($cwd)
     {
         parent::__construct('Propan', '0.1.0');
 
-        $this->context = $context;
+        $this->cwd = $cwd;
     }
 
     /**
      *
      */
-    public function getContext()
+    public function getCwd()
     {
-        return $this->context;
+        return $this->cwd;
     }
 }

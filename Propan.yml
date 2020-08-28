@@ -3,7 +3,6 @@ name: Propan
 version: 0.1.0
 
 layers:
-  - javanile/vtiger-core:7.1.0"
+  - javanile/vtiger-core:7.1.0
 
 volumes:
-
