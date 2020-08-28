@@ -1,14 +1,14 @@
 <?php
 
-namespace Laravel\Installer\Console\Tests;
+namespace Javanile\Propan\Tests;
 
-use Javanile\Propan\Commands\NewCommand;
+use Javanile\Propan\Commands\BuildCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Filesystem\Filesystem;
 
-class NewCommandTest extends TestCase
+class BuildCommandTest extends TestCase
 {
     public function test_it_can_scaffold_a_new_blog()
     {
@@ -19,10 +19,10 @@ class NewCommandTest extends TestCase
             (new Filesystem)->remove($scaffoldDirectory);
         }
 
-        $app = new Application('Larawal');
+        $app = new Application();
         $app->add(new NewCommand);
 
-        $tester = new CommandTester($app->find('new'));
+        $tester = new CommandTester($app->find('build'));
 
         $statusCode = $tester->execute(['name' => $scaffoldDirectoryName, '--from' => 'blog']);
 
