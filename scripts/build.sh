@@ -6,7 +6,7 @@
 composer install --no-ansi --no-dev --no-interaction \
                  --no-progress --no-scripts --optimize-autoloader
 
-box build
+box compile
 
 [[ -d vendor.tmp ]] && mv vendor.tmp vendor
 [[ -f composer.lock.tmp ]] && mv composer.lock.tmp composer.lock
