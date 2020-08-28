@@ -32,8 +32,8 @@ class Context
     public function initialize($path, $output)
     {
         $this->path = $path;
-        $this->buildPath = $this->cwd.'/.build';
-        $this->configFile = $this->cwd.'/Propan.json';
+        $this->buildPath = $this->cwd.'/build';
+        $this->configFile = $this->cwd.'/Propan.yml';
 
         if (!file_exists($this->configFile)) {
             echo "Propan.json not found current directory";

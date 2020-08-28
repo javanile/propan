@@ -41,12 +41,12 @@ class Build
 
         file_put_contents(
             $this->context->getBuildPath().'/public/index.php',
-            BuildTemplates\PublicIndex::fileContent()
+            Templates\PublicIndex::fileContent()
         );
 
         file_put_contents(
             $this->context->getBuildPath().'/server.php',
-            BuildTemplates\Server::fileContent()
+            Templates\Server::fileContent()
         );
 
         file_put_contents($this->context->getBuildPath().'/composer.json', json_encode([

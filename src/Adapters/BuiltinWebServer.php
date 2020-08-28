@@ -1,6 +1,6 @@
 <?php
 
-namespace Javanile\Propan\Activities\RunAdapters;
+namespace Javanile\Propan\Activities\Adapters;
 
 use GuzzleHttp\Client;
 use RuntimeException;

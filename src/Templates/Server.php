@@ -1,6 +1,6 @@
 <?php
 
-namespace Javanile\Propan\Activities\BuildTemplates;
+namespace Javanile\Propan\Activities\Templates;
 
 class Server
 {

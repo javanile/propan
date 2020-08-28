@@ -7,6 +7,8 @@ if (file_exists(__DIR__.'/../../../autoload.php')) {
     require __DIR__.'/../vendor/autoload.php';
 }
 
+var_dump($_ENV);
+
 $app = new Javanile\Propan\Application(getcwd());
 
 $app->add(new Javanile\Propan\Commands\BuildCommand);

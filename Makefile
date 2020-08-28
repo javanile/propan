@@ -16,10 +16,15 @@ dist:
 	bash scripts/build.sh
 	sudo cp dist/propan.phar /usr/local/bin/propan
 
+.PHONY: docs
+docs:
+	mkdocs gh-deploy --remote-branch gh-pages
+
 test-run-local:
 	php bin/propan run --port 8080
 
 test-build:
 	php bin/propan build .
+
 fork:
 	curl -sL git.io/fork.sh | bash -
