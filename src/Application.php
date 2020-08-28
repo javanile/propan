@@ -2,7 +2,9 @@
 
 namespace Javanile\Propan;
 
-class Application extends \Symfony\Component\Console\Application
+use Symfony\Component\Console\Application as ConsoleApplication;
+
+class Application extends ConsoleApplication
 {
     /**
      * Application configuration.
