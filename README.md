@@ -1,7 +1,7 @@
 # Propan
 > Project Pancake for PHP.
 
-<a href="https://github.com/larawal/installer/actions"><img src="https://github.com/javanile/propan/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://github.com/javanile/propan/actions"><img src="https://github.com/javanile/propan/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/javanile/propan"><img src="https://poser.pugx.org/javanile/propan/d/total.svg" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/javanile/propan"><img src="https://poser.pugx.org/javanile/propan/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/javanile/propan"><img src="https://poser.pugx.org/javanile/propan/license.svg" alt="License"></a>
