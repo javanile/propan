@@ -6,6 +6,8 @@
 <a href="https://packagist.org/packages/javanile/propan"><img src="https://poser.pugx.org/javanile/propan/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/javanile/propan"><img src="https://poser.pugx.org/javanile/propan/license.svg" alt="License"></a>
 
+Propan is the best way to deploy your PHP application in cloud-based infrastructure
+
 ## Official Documentation
 
 Documentation for installing Propan can be found on the [Propan website](https://propan.javanile.org).
